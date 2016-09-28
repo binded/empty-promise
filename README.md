@@ -9,6 +9,9 @@ Can be useful for testing and in some complex scenarios that involve a
 combination of streams, events, callbacks, etc. In general, should be
 avoided.
 
+Not to be confused with `Promise.resolve()` and `Promise.reject()` which
+serve a different purpose.
+
 ## Install
 
 ```bash
