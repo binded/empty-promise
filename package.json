@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/blockai/empty-promise.git"
   },
-  "keywords": [],
+  "keywords": ["promise", "es6", "wait", "resolve", "reject"],
   "author": "Oli Lalonde <olalonde@gmail.com> (https://syskall.com/)",
   "license": "MIT",
   "bugs": {
