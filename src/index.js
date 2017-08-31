@@ -3,7 +3,13 @@ export default () => {
   const p = new Promise((resolve, reject) => {
     callbacks = { resolve, reject }
   })
-  p.resolve = callbacks.resolve
-  p.reject = callbacks.reject
+  p.resolve = (val) => {
+    callbacks.resolve(val)
+    return p
+  }
+  p.reject = (val) => {
+    callbacks.reject(val)
+    return p
+  }
   return p
 }
