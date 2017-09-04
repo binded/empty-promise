@@ -1,4 +1,4 @@
-export default () => {
+module.exports = () => {
   let callbacks
   const p = new Promise((resolve, reject) => {
     callbacks = { resolve, reject }
