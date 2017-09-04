@@ -41,7 +41,7 @@ test('resolve returns original promise', (t) => {
 test('reject returns original promise', (t) => {
   const wait = emptyPromise()
 
-  const result = wait.reject('some value')
+  const result = wait.reject('some error')
 
   t.equal(result instanceof Promise, true)
   t.equal(result, wait)
@@ -50,12 +50,39 @@ test('reject returns original promise', (t) => {
   t.end()
 })
 
-test('receive resolved value after `await`ing resolve', (t) => {
+test('receive resolved value after awaiting resolve', (t) => {
   (async () => {
     const wait = emptyPromise()
     const result = await wait.resolve('some value')
 
     t.equal(result, 'some value')
+    t.end()
+  })()
+})
+
+test('done returns false if promise not resolved', (t) => {
+  const wait = emptyPromise()
+  t.equal(wait.done(), false)
+  wait.resolve().then(() => t.end())
+})
+
+test('done returns true after promise resolved', (t) => {
+  (async () => {
+    const wait = emptyPromise()
+    await wait.resolve('some value')
+
+    t.equal(wait.done(), true)
+    t.end()
+  })()
+})
+
+test('done returns true after promise rejected', (t) => {
+  (async () => {
+    const wait = emptyPromise()
+    await wait.reject('some error')
+      .catch(() => { /* ignore */ })
+
+    t.equal(wait.done(), true)
     t.end()
   })()
 })
