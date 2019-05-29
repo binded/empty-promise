@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "externally exposed resolve/reject api for native promises",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "directories": {
     "test": "test"
   },
